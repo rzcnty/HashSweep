@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1351</width>
+    <height>864</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow {
+    background-color: #2b2b2b;
+}
+QLabel {
+    color: #dcdcdc;
+    font-size: 14px;
+}
+QTableWidget {
+    background-color: #3c3f41;
+    color: #ffffff;
+    gridline-color: #555555;
+}
+QHeaderView::section {
+    background-color: #323232;
+    color: white;
+    padding: 4px;
+}
+QPushButton {
+    background-color: #365880;
+    color: white;
+    border-radius: 4px;
+    padding: 6px;
+    font-weight: bold;
+}
+QPushButton:hover {
+    background-color: #4a76a8;
+}
+QLineEdit {
+    background-color: #3c3f41;
+    color: white;
+    border: 1px solid #555555;
+    padding: 4px;
+}
+QProgressBar {
+    border: 2px solid #555555;
+    border-radius: 5px;
+    text-align: center;
+    color: white;
+}
+QProgressBar::chunk {
+    background-color: #05B8CC;
+    width: 20px;
+}</string>
+  </property>
+  <widget class="QWidget" name="widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>20</y>
+     <width>1131</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <widget class="QLineEdit" name="txt_path">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>1111</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="placeholderText">
+     <string>Taranacak klasörü seçiniz</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_browse">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>60</y>
+      <width>101</width>
+      <height>34</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Klasör seç</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>folder.png</normaloff>folder.png</iconset>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_start">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>60</y>
+      <width>131</width>
+      <height>34</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Taramayı başlat</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QProgressBar" name="progressBar">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>140</y>
+     <width>1111</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="value">
+    <number>0</number>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lbl_status">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>170</y>
+     <width>101</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Hazır bekliyor...</string>
+   </property>
+  </widget>
+  <widget class="QTableWidget" name="tbl_results">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>200</y>
+     <width>1111</width>
+     <height>531</height>
+    </rect>
+   </property>
+   <property name="editTriggers">
+    <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+   </property>
+   <property name="alternatingRowColors">
+    <bool>false</bool>
+   </property>
+   <property name="selectionBehavior">
+    <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
+   </property>
+   <column>
+    <property name="text">
+     <string>Dosya Adı</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Konum</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Boyut</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Hash</string>
+    </property>
+   </column>
+  </widget>
+  <widget class="QWidget" name="widget_2" native="true">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>740</y>
+     <width>1121</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <widget class="QLabel" name="lbl_stats">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>1111</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>0 dosya tarandı. 0 kopya bulundu.</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_delete">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>40</y>
+      <width>101</width>
+      <height>34</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 0, 0);
+color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>Seçilenleri sil!</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_hash">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>40</y>
+      <width>111</width>
+      <height>34</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Hash Göster</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>slack1.png</normaloff>slack1.png</iconset>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
