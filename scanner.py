@@ -31,8 +31,16 @@ class Scanner(QThread):
         """
         self.status_signal.emit("Dosyalar listeleniyor...")
         file_list = []
+
         for root, dirs, files in os.walk(self.folder_path):
+            for i in range(len(dirs) - 1, -1, -1):
+                if dirs[i].startswith('.'):
+                    del dirs[i]
+
             for file in files:
+                if file.startswith('.'):
+                    continue
+
                 file_list.append(os.path.join(root, file))
 
         total_files = len(file_list)
