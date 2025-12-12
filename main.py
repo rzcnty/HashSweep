@@ -20,8 +20,12 @@ class Form(QMainWindow):
         # Some GUI settings
         header = self.ui.tbl_results.horizontalHeader()
         header.setSectionResizeMode(0, QHeaderView.ResizeMode.ResizeToContents)
-        header.setSectionResizeMode(1, QHeaderView.ResizeMode.Stretch)
-        self.ui.tbl_results.setColumnHidden(3, True)
+        header.setSectionResizeMode(1, QHeaderView.ResizeMode.Interactive)
+        header.resizeSection(1, 250)
+        self.ui.tbl_results.setColumnHidden(1, True)
+        header.setSectionResizeMode(2, QHeaderView.ResizeMode.Stretch)
+        header.setSectionResizeMode(3, QHeaderView.ResizeMode.Fixed)
+        header.resizeSection(3, 100)
 
         # Button click events
         self.ui.btn_browse.clicked.connect(self.select_folder)
@@ -53,7 +57,7 @@ class Form(QMainWindow):
         self.ui.btn_start.setEnabled(False)
         self.ui.btn_delete.setEnabled(False)
         self.ui.tbl_results.setRowCount(0)
-        self.ui.progress_bar.setValue(0)
+        self.ui.progressBar.setValue(0)
 
         self.worker = Scanner(folder_path)
 
@@ -65,7 +69,7 @@ class Form(QMainWindow):
 
     def update_progress(self, val):
         """Write the percentage from scanner to bar."""
-        self.ui.progress_bar.setValue(val)
+        self.ui.progressBar.setValue(val)
 
     def scan_finished(self):
         """When scan is finished."""
@@ -80,7 +84,7 @@ class Form(QMainWindow):
         """Fill the data from the database into the table."""
         self.ui.tbl_results.clearContents()
 
-        COLUMNS = ["Dosya Adı", "Konum", "Boyut", "Hash"]
+        COLUMNS = ["Dosya Adı", "Hash", "Konum", "Boyut"]
         self.ui.tbl_results.setHorizontalHeaderLabels(COLUMNS)
 
         if data:
@@ -92,7 +96,7 @@ class Form(QMainWindow):
                 for columnno in range(len(COLUMNS)):
                     item_text = str(row_data[columnno])
 
-                    if columnno == 2:
+                    if columnno == 3:
                         item_text += " bytes"
 
                     self.ui.tbl_results.setItem(rowno, columnno,
@@ -109,7 +113,7 @@ class Form(QMainWindow):
 
     def toggle_hash_view(self, checked):
         """Show/hide hash column."""
-        self.ui.tbl_results.setColumnHidden(3, not checked)
+        self.ui.tbl_results.setColumnHidden(1, not checked)
 
     def delete_selected(self):
         """Delete the selected file from disk and DB."""
@@ -117,13 +121,13 @@ class Form(QMainWindow):
         if not selected_rows:
             return
 
+        questString = "dosyayı kalıcı olarak silmek istiyor musun?"
         reply = QMessageBox.question(self, "Silme Onayı",
-                                     f"""{len(selected_rows)} dosyayı
-                                     kalıcı olarak silmek istiyor musun?""")
+                                     f"""{len(selected_rows)} {questString}""")
 
         if reply == QMessageBox.StandardButton.Yes:
             for index in sorted(selected_rows, reverse=True):
-                file_path = self.ui.tbl_results.item(index.row(), 1).text()
+                file_path = self.ui.tbl_results.item(index.row(), 2).text()
 
                 try:
                     if os.path.exists(file_path):

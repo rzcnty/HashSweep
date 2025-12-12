@@ -20,11 +20,13 @@ class Ui_Form(object):
 "    color: #dcdcdc;\n"
 "    font-size: 14px;\n"
 "}\n"
+"\n"
 "QTableWidget {\n"
 "    background-color: #3c3f41;\n"
 "    color: #ffffff;\n"
 "    gridline-color: #555555;\n"
 "}\n"
+"\n"
 "QHeaderView::section {\n"
 "    background-color: #323232;\n"
 "    color: white;\n"
@@ -61,6 +63,7 @@ class Ui_Form(object):
         self.widget.setObjectName("widget")
         self.txt_path = QtWidgets.QLineEdit(parent=self.widget)
         self.txt_path.setGeometry(QtCore.QRect(10, 10, 1111, 32))
+        self.txt_path.setReadOnly(True)
         self.txt_path.setObjectName("txt_path")
         self.btn_browse = QtWidgets.QPushButton(parent=self.widget)
         self.btn_browse.setGeometry(QtCore.QRect(10, 60, 101, 34))
@@ -79,12 +82,13 @@ class Ui_Form(object):
         self.progressBar.setProperty("value", 0)
         self.progressBar.setObjectName("progressBar")
         self.lbl_status = QtWidgets.QLabel(parent=Form)
-        self.lbl_status.setGeometry(QtCore.QRect(20, 170, 101, 18))
+        self.lbl_status.setGeometry(QtCore.QRect(20, 170, 1111, 18))
         self.lbl_status.setObjectName("lbl_status")
         self.tbl_results = QtWidgets.QTableWidget(parent=Form)
         self.tbl_results.setGeometry(QtCore.QRect(20, 200, 1111, 531))
         self.tbl_results.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.NoEditTriggers)
         self.tbl_results.setAlternatingRowColors(False)
+        self.tbl_results.setSelectionMode(QtWidgets.QAbstractItemView.SelectionMode.MultiSelection)
         self.tbl_results.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectionBehavior.SelectRows)
         self.tbl_results.setObjectName("tbl_results")
         self.tbl_results.setColumnCount(4)
@@ -116,6 +120,7 @@ class Ui_Form(object):
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap("slack1.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.btn_hash.setIcon(icon1)
+        self.btn_hash.setCheckable(True)
         self.btn_hash.setObjectName("btn_hash")
 
         self.retranslateUi(Form)

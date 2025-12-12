@@ -21,11 +21,13 @@ QLabel {
     color: #dcdcdc;
     font-size: 14px;
 }
+
 QTableWidget {
     background-color: #3c3f41;
     color: #ffffff;
     gridline-color: #555555;
 }
+
 QHeaderView::section {
     background-color: #323232;
     color: white;
@@ -75,6 +77,9 @@ QProgressBar::chunk {
       <width>1111</width>
       <height>32</height>
      </rect>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
     </property>
     <property name="placeholderText">
      <string>Taranacak klasörü seçiniz</string>
@@ -134,7 +139,7 @@ QProgressBar::chunk {
     <rect>
      <x>20</x>
      <y>170</y>
-     <width>101</width>
+     <width>1111</width>
      <height>18</height>
     </rect>
    </property>
@@ -156,6 +161,9 @@ QProgressBar::chunk {
    </property>
    <property name="alternatingRowColors">
     <bool>false</bool>
+   </property>
+   <property name="selectionMode">
+    <enum>QAbstractItemView::SelectionMode::MultiSelection</enum>
    </property>
    <property name="selectionBehavior">
     <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
@@ -240,6 +248,9 @@ color: rgb(255, 255, 255);</string>
     <property name="icon">
      <iconset>
       <normaloff>slack1.png</normaloff>slack1.png</iconset>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>

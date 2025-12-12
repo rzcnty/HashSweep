@@ -49,7 +49,7 @@ class DataBase:
         """
         ccon = self.database()
         command = ccon.cursor()
-        command.execute(""" SELECT name, path, size, hash
+        command.execute(""" SELECT name, hash, path, size
         FROM TBL_RESULTS WHERE hash IN
         (SELECT hash FROM TBL_RESULTS GROUP BY hash HAVING COUNT(*) > 1)
         ORDER BY hash """)
