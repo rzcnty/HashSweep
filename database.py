@@ -9,10 +9,6 @@ class DataBase:
         """To create the database for the first time when the class starts."""
         self.database()
 
-    def connection(self):
-        """Create a connection object."""
-        return sqlite3.connect("./results.db")
-
     def database(self):
         """
         Initialize the database schema.

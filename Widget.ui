@@ -58,7 +58,9 @@ QProgressBar {
 QProgressBar::chunk {
     background-color: #05B8CC;
     width: 20px;
-}</string>
+}
+
+QPushButton:disabled { background-color: #555555; color: #888888; }</string>
   </property>
   <widget class="QWidget" name="widget" native="true">
    <property name="geometry">
@@ -147,48 +149,6 @@ QProgressBar::chunk {
     <string>Hazır bekliyor...</string>
    </property>
   </widget>
-  <widget class="QTableWidget" name="tbl_results">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>200</y>
-     <width>1111</width>
-     <height>531</height>
-    </rect>
-   </property>
-   <property name="editTriggers">
-    <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
-   </property>
-   <property name="alternatingRowColors">
-    <bool>false</bool>
-   </property>
-   <property name="selectionMode">
-    <enum>QAbstractItemView::SelectionMode::MultiSelection</enum>
-   </property>
-   <property name="selectionBehavior">
-    <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
-   </property>
-   <column>
-    <property name="text">
-     <string>Dosya Adı</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>Konum</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>Boyut</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>Hash</string>
-    </property>
-   </column>
-  </widget>
   <widget class="QWidget" name="widget_2" native="true">
    <property name="geometry">
     <rect>
@@ -226,8 +186,11 @@ QProgressBar::chunk {
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 0, 0);
-color: rgb(255, 255, 255);</string>
+     <string notr="true">
+QPushButton {
+    background-color: rgb(255, 0, 0);
+    color: rgb(255, 255, 255);
+}</string>
     </property>
     <property name="text">
      <string>Seçilenleri sil!</string>
@@ -252,6 +215,119 @@ color: rgb(255, 255, 255);</string>
     <property name="checkable">
      <bool>true</bool>
     </property>
+   </widget>
+   <widget class="QRadioButton" name="rbtn_listwidget">
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>40</y>
+      <width>131</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Düz Liste</string>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="rbtn_treewidget">
+    <property name="geometry">
+     <rect>
+      <x>970</x>
+      <y>40</y>
+      <width>131</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Gruplandırılmış</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QStackedWidget" name="stackedWidget">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>200</y>
+     <width>1111</width>
+     <height>531</height>
+    </rect>
+   </property>
+   <widget class="QWidget" name="page">
+    <widget class="QTableWidget" name="tbl_results">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>1111</width>
+       <height>541</height>
+      </rect>
+     </property>
+     <property name="editTriggers">
+      <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+     </property>
+     <property name="alternatingRowColors">
+      <bool>false</bool>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::SelectionMode::MultiSelection</enum>
+     </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
+     </property>
+     <column>
+      <property name="text">
+       <string>Dosya Adı</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Konum</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Boyut</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Hash</string>
+      </property>
+     </column>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="page_2">
+    <widget class="QTreeWidget" name="treeWidget">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>1111</width>
+       <height>541</height>
+      </rect>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::SelectionMode::ExtendedSelection</enum>
+     </property>
+     <column>
+      <property name="text">
+       <string notr="true">Dosya Adı</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Konum</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Boyut</string>
+      </property>
+     </column>
+    </widget>
    </widget>
   </widget>
  </widget>
